@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player
@@ -16,6 +16,11 @@ namespace Player
         void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+
+        private void Update()
+        {
+            Debug.Log("Can Player Jump" + _canJump);
         }
 
         private void FixedUpdate()
@@ -43,13 +48,14 @@ namespace Player
                 _rigidbody2D.velocity = jumpVelocity;
             }
         }
-
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.gameObject.CompareTag("Lightbulb")) return;
             _canJump = true;
         }
         private void OnTriggerExit2D(Collider2D other)
         {
+            if (other.gameObject.CompareTag("Lightbulb")) return;
             _canJump = false;
         }
     }

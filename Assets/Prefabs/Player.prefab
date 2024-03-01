@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7753791277549323577}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0026043802, y: -0.011719346}
+  m_Offset: {x: -0.0015450716, y: -0.015957415}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -146,7 +146,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83332443, y: 0.9192666}
+  m_Size: {x: 0.8227298, y: 0.91079044}
   m_EdgeRadius: 0
 --- !u!50 &6747187847650732422
 Rigidbody2D:
@@ -272,6 +272,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b5880e22-32b7-4995-b758-d517bcc72e51
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 33ccb1d5-ab87-435f-a22c-e34c3bcde48f
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
