@@ -5,7 +5,7 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField, Range(1f, 50f), Tooltip("Player Movement")] private float playerSpeed = 20f;
+        [SerializeField, Tooltip("Player Movement")] private float playerSpeed = 20f;
         private bool _canMove;
         private Vector2 _playerInput;
         [SerializeField, Range(1f, 20f)] private float playerJumpHeight = 5f;
