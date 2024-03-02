@@ -11,6 +11,8 @@ namespace Player
         [SerializeField, Range(1f, 20f)] private float playerJumpHeight = 5f;
         [Tooltip("Components")] private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
+        private AudioSource _playerAudioSource;
+        [SerializeField] private AudioClip[] movementSounds;
 
 
         private bool _canJump;
@@ -19,6 +21,7 @@ namespace Player
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _playerAudioSource = GetComponent<AudioSource>();
         }
         private void FixedUpdate()
         {
@@ -29,13 +32,27 @@ namespace Player
         {
             _playerInput = context.ReadValue<Vector2>();
             Debug.Log("Player Input" + _playerInput);
-            if (context.performed) _canMove = true;
+            if (context.performed)
+            {
+                _canMove = true;
+                ChooseMovementSound();
+            }
             else if (context.canceled)
             {
-                // _rigidbody2D.velocity = Vector2.zero;
+                _playerAudioSource.Stop();
                 _canMove = false;
             }
             SetPlayerSpriteDirection();
+        }
+
+        void ChooseMovementSound()
+        {
+            if (_playerAudioSource.isPlaying) _playerAudioSource.Stop();
+            int newSound = Random.Range(0, movementSounds.Length);
+            _playerAudioSource.clip = movementSounds[newSound];
+            Debug.Log("Player Movement Clip: " + _playerAudioSource.clip.name);
+            _playerAudioSource.Play();
+
         }
 
         void SetPlayerSpriteDirection()

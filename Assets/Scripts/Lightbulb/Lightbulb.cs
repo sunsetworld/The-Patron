@@ -1,4 +1,4 @@
-using System;
+using GameManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +11,7 @@ public class Lightbulb : MonoBehaviour
     [SerializeField] private AudioClip lightbulbOffSound;
     private SpriteRenderer _spriteRenderer;
     private bool _canInteractWithLightbulb;
+    [SerializeField] private PuzzleManager puzzleManager;
 
     private void Start()
     {
@@ -34,10 +35,7 @@ public class Lightbulb : MonoBehaviour
             return;
         }
 
-        if (_canInteractWithLightbulb)
-        {
-            ToggleLightbulb();
-        }
+        if (_canInteractWithLightbulb) ToggleLightbulb();
 
     }
 
@@ -55,5 +53,6 @@ public class Lightbulb : MonoBehaviour
             AudioSource.PlayClipAtPoint(lightbulbOffSound, transform.position);
             lightbulbEnabled = false;
         }
+        puzzleManager.CheckPuzzle();
     }
 }
