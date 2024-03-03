@@ -1,12 +1,21 @@
+using GameManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
 public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject doorFront;
     private bool _canOpenDoor;
     private bool _completedPuzzle;
+    [SerializeField] private int level;
+    private GameManager.GameManager _gameManager;
+    private LevelManager _levelManager;
+
+    private void Start()
+    {
+        _gameManager = FindObjectOfType<GameManager.GameManager>();
+        _levelManager = FindObjectOfType<LevelManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
@@ -32,13 +41,6 @@ public class Door : MonoBehaviour
     {
         if (!context.performed) return;
         if (!_canOpenDoor) return;
-        OpenNextLevel();
-    }
-
-    void OpenNextLevel()
-    {
-        int nextLevel = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(nextLevel);
-        // Currently just reloads the current level, for now.
+        _levelManager.OpenNextLevel();
     }
 }
