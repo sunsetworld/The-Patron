@@ -110,6 +110,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0adea850fab3eca4dbaa4fabb1c2269f, type: 3}
   - {fileID: 8300000, guid: 003eea28992f7d44ab93f1e0965cff16, type: 3}
   - {fileID: 8300000, guid: 4d4189247e182ea4ba5c011c2240472e, type: 3}
+  jumpSound: {fileID: 8300000, guid: 12d87d10a2ff4bd4eb334b594629e962, type: 3}
 --- !u!61 &3449936984688714188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -389,7 +390,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
