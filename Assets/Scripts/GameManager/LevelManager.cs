@@ -8,6 +8,7 @@ namespace GameManager
         private GameManager _gameManager;
         private Transform _playerTransform;
         [SerializeField] private float playerXMoveAmount = 26;
+        [SerializeField] private GameObject[] cameras;
 
         // Start is called before the first frame update
         void Start()
@@ -22,7 +23,17 @@ namespace GameManager
         {
             currentLevel++;
             if (!_gameManager.debugMode) PlayerPrefs.SetInt("PlayerLevel", currentLevel);
+            ChooseNewCamera();
             _playerTransform.position = new Vector3(_playerTransform.position.x + playerXMoveAmount, 3.26f, 0);
+        }
+
+        void ChooseNewCamera()
+        {
+            for (int i = 0; i < cameras.Length; i++)
+            {
+                if (currentLevel == i) cameras[i].SetActive(true);
+                else cameras[i].SetActive(false);
+            }
         }
     }
 }
