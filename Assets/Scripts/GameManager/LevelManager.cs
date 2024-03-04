@@ -1,4 +1,6 @@
 using UnityEngine;
+using DG.Tweening;
+using Unity.Mathematics;
 
 namespace GameManager
 {
@@ -6,25 +8,40 @@ namespace GameManager
     {
         public int currentLevel;
         private GameManager _gameManager;
-        private Transform _playerTransform;
         [SerializeField] private float playerXMoveAmount = 26;
         [SerializeField] private GameObject[] cameras;
+        [SerializeField] private Transform[] spawnLocations;
+        [SerializeField] GameObject playerObj;
+        private GameObject _spawnedPlayer;
+        [SerializeField] private float playerMoveDuration = 3;
+        [SerializeField] private bool useTweenForPlayerSpawnMove;
 
         // Start is called before the first frame update
         void Start()
         {
-            _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
             _gameManager = FindObjectOfType<GameManager>();
-            if (_gameManager.debugMode) currentLevel = PlayerPrefs.GetInt("PlayerLevel"); 
-            // Saves level ONLY when the game is not in Debug Mode.
+            if (!_gameManager.debugMode) currentLevel = PlayerPrefs.GetInt("PlayerLevel");
+            _spawnedPlayer = 
+                Instantiate(playerObj, spawnLocations[currentLevel].position, quaternion.identity);
+            if (_spawnedPlayer == null) Debug.Break();
+
         }
 
         public void OpenNextLevel()
         {
             currentLevel++;
+            Debug.Log("Current Level" + currentLevel);
             if (!_gameManager.debugMode) PlayerPrefs.SetInt("PlayerLevel", currentLevel);
             ChooseNewCamera();
-            _playerTransform.position = new Vector3(_playerTransform.position.x + playerXMoveAmount, 3.26f, 0);
+            MovePlayerToNewSpawnLocation();
+        }
+
+        void MovePlayerToNewSpawnLocation()
+        {
+            if (useTweenForPlayerSpawnMove) 
+                _spawnedPlayer.transform.DOMove(spawnLocations[currentLevel].position, playerMoveDuration);
+            else _spawnedPlayer.transform.position = spawnLocations[currentLevel].position;
+
         }
 
         void ChooseNewCamera()
