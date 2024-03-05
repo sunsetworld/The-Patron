@@ -1,6 +1,8 @@
+using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
+using UnityEngine.Tilemaps;
 
 namespace GameManager
 {
@@ -15,16 +17,36 @@ namespace GameManager
         private GameObject _spawnedPlayer;
         [SerializeField] private float playerMoveDuration = 3;
         [SerializeField] private bool useTweenForPlayerSpawnMove;
+        [SerializeField] private bool canResetCurrentPlayerLevel;
+        private CinemachineBrain _cinemachineBrain;
+        [SerializeField] private TilemapCollider2D wallCollider2d;
+        
 
         // Start is called before the first frame update
         void Start()
         {
             _gameManager = FindObjectOfType<GameManager>();
-            if (!_gameManager.debugMode) currentLevel = PlayerPrefs.GetInt("PlayerLevel");
+            _cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+            if (canResetCurrentPlayerLevel) StartNewGame();
+            if (!_gameManager.debugMode) ResumeCurrentGame();
+            ChooseNewCamera();
+            PlayGame();
+        }
+
+        public void PlayGame()
+        {
             _spawnedPlayer = 
                 Instantiate(playerObj, spawnLocations[currentLevel].position, quaternion.identity);
-            if (_spawnedPlayer == null) Debug.Break();
+        }
 
+        void StartNewGame()
+        {
+            PlayerPrefs.SetInt("PlayerLevel", 0);
+        }
+
+        void ResumeCurrentGame()
+        {
+            currentLevel = PlayerPrefs.GetInt("PlayerLevel");
         }
 
         public void OpenNextLevel()
@@ -38,8 +60,13 @@ namespace GameManager
 
         void MovePlayerToNewSpawnLocation()
         {
-            if (useTweenForPlayerSpawnMove) 
-                _spawnedPlayer.transform.DOMove(spawnLocations[currentLevel].position, playerMoveDuration);
+            if (useTweenForPlayerSpawnMove)
+            {
+                wallCollider2d.enabled = false;
+                _spawnedPlayer.transform.DOMove(spawnLocations[currentLevel].position, playerMoveDuration)
+                    .OnComplete(() => wallCollider2d.enabled = true);
+                
+            }
             else _spawnedPlayer.transform.position = spawnLocations[currentLevel].position;
 
         }

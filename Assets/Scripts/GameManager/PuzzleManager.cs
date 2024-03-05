@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace GameManager
@@ -10,6 +11,12 @@ namespace GameManager
         [SerializeField] private Lightbulb[] lightbulbs;
         private bool _hasPlayerCompletedPuzzle;
         [SerializeField] private AudioClip puzzleCompleteSound;
+        private AudioSource _audioSource;
+
+        private void Start()
+        {
+            _audioSource = FindObjectOfType<AudioSource>();
+        }
 
         public void CheckPuzzle()
         {
@@ -30,7 +37,7 @@ namespace GameManager
 
         void CompletedPuzzle()
         {
-            AudioSource.PlayClipAtPoint(puzzleCompleteSound, transform.position);
+            _audioSource.Play();
             doorObj.OpenDoor();
         }
     }
