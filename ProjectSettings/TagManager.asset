@@ -45,6 +45,9 @@ TagManager:
   - name: WorldObjects
     uniqueID: 2466949951
     locked: 0
+  - name: Trail
+    uniqueID: 1830228499
+    locked: 0
   - name: Player
     uniqueID: 795592537
     locked: 0

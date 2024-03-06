@@ -236,7 +236,7 @@ MonoBehaviour:
   - {fileID: 10128366}
   - {fileID: 74759077}
   playerObj: {fileID: 4493076190940403320, guid: 6ac9106dbee42864283e0920ef582b9e, type: 3}
-  playerMoveDuration: 3
+  playerMoveDuration: 3.5
   useTweenForPlayerSpawnMove: 1
   canResetCurrentPlayerLevel: 0
   wallCollider2d: {fileID: 259822241}
@@ -5402,7 +5402,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000003fab0a9359c76b2f2bf4870e
+  m_ApplyToSortingLayers: 000000003fab0a9359c76b2f2bf4870e1312176d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -13854,6 +13854,10 @@ PrefabInstance:
     - target: {fileID: 5401143555690403252, guid: 3e33137e5709e5646b6d525d0de7d1f8, type: 3}
       propertyPath: m_Name
       value: Lightbulb (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401143555690403252, guid: 3e33137e5709e5646b6d525d0de7d1f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5422097114022785969, guid: 3e33137e5709e5646b6d525d0de7d1f8, type: 3}
       propertyPath: puzzleManager
