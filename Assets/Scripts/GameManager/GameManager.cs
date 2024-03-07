@@ -12,6 +12,7 @@ namespace GameManager
         private void Start()
         {
             _audioSource = GetComponent<AudioSource>();
+            if (_audioSource.mute) _audioSource.mute = false;
         }
 
         public void OnMute(InputAction.CallbackContext context)

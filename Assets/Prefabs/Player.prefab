@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 50
-  playerJumpHeight: 20
+  playerJumpHeight: 18
   movementSounds:
   - {fileID: 8300000, guid: 8a4cf2afbefd96b4f808436a50b37d09, type: 3}
   - {fileID: 8300000, guid: 4fa0ce9f2001cd44aaee3f2f2acf96a3, type: 3}
