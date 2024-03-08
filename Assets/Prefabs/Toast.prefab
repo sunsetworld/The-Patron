@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7928953193848032704}
   m_Layer: 0
   m_Name: Toast
-  m_TagString: Untagged
+  m_TagString: Bread
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750c288bf29f7fd42a065b6121b32abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toastMovementSpeed: 500
+  toastMovementSpeed: 3
 --- !u!61 &7928953193848032704
 BoxCollider2D:
   m_ObjectHideFlags: 0

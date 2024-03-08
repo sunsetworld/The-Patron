@@ -37,7 +37,7 @@ namespace GameManager
 
         void CompletedPuzzle()
         {
-            _audioSource.Play();
+            if (_audioSource != null) _audioSource.Play();
             doorObj.OpenDoor();
         }
     }

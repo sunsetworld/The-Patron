@@ -35,6 +35,8 @@ namespace GameManager
 
         public void PlayGame()
         {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            if (players.Length > 0) return;
             _spawnedPlayer = 
                 Instantiate(playerObj, spawnLocations[currentLevel].position, quaternion.identity);
         }
@@ -51,11 +53,22 @@ namespace GameManager
 
         public void OpenNextLevel()
         {
+            if (currentLevel == spawnLocations.Length - 1)
+            {
+                EndGame();
+                return;
+            }
             currentLevel++;
             Debug.Log("Current Level" + currentLevel);
             if (!_gameManager.debugMode) PlayerPrefs.SetInt("PlayerLevel", currentLevel);
             ChooseNewCamera();
             MovePlayerToNewSpawnLocation();
+        }
+
+        void EndGame()
+        {
+            Destroy(_spawnedPlayer);
+            Debug.Log("Game Over.");
         }
 
         void MovePlayerToNewSpawnLocation()
@@ -68,7 +81,6 @@ namespace GameManager
                 
             }
             else _spawnedPlayer.transform.position = spawnLocations[currentLevel].position;
-
         }
 
         void ChooseNewCamera()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lightbulb
   - Toaster
+  - Bread
   layers:
   - Default
   - TransparentFX

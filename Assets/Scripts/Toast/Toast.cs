@@ -9,7 +9,7 @@ public class Toast : MonoBehaviour
     private void Start()
     {
         _toastRb = GetComponent<Rigidbody2D>();
-        _toastRb.velocity = transform.up * toastMovementSpeed * Time.deltaTime;
+        _toastRb.velocity = transform.up * toastMovementSpeed;
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
