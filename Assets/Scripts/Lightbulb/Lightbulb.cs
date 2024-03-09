@@ -43,16 +43,26 @@ public class Lightbulb : MonoBehaviour
     {
         if (!lightbulbEnabled)
         {
-            _spriteRenderer.sprite = lightbulbLit;
-            AudioSource.PlayClipAtPoint(lightbulbOnSound, transform.position);
-            lightbulbEnabled = true;
+            EnableLightbulb();
         }
         else
         {
-            _spriteRenderer.sprite = lightbulbUnlit;
-            AudioSource.PlayClipAtPoint(lightbulbOffSound, transform.position);
-            lightbulbEnabled = false;
+            DisableLightbulb();
         }
         puzzleManager.CheckPuzzle();
+    }
+
+    void EnableLightbulb()
+    {
+        _spriteRenderer.sprite = lightbulbLit;
+        AudioSource.PlayClipAtPoint(lightbulbOnSound, transform.position);
+        lightbulbEnabled = true;
+    }
+
+    public void DisableLightbulb()
+    {
+        _spriteRenderer.sprite = lightbulbUnlit;
+        // AudioSource.PlayClipAtPoint(lightbulbOffSound, transform.position);
+        lightbulbEnabled = false;
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,11 +7,11 @@ namespace GameManager
     {
         public bool debugMode; // Turn OFF when shipping.
         private AudioSource _audioSource;
+        public bool playerHasKey;
 
         private void Start()
         {
             _audioSource = GetComponent<AudioSource>();
-            if (_audioSource.mute) _audioSource.mute = false;
         }
 
         public void OnMute(InputAction.CallbackContext context)
@@ -20,6 +19,12 @@ namespace GameManager
             if (!context.performed) return;
             if (!_audioSource.mute) _audioSource.mute = true;
             else _audioSource.mute = false;
+        }
+
+        public void PlayMusic()
+        {
+            if (_audioSource.mute) _audioSource.mute = false;
+            if (!_audioSource.isPlaying) _audioSource.Play();
         }
     }
 }

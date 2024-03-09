@@ -37,6 +37,12 @@ public class Door : MonoBehaviour
         _completedPuzzle = true;
     }
 
+    public void CloseDoor()
+    {
+        doorFront.gameObject.SetActive(true);
+        _completedPuzzle = false;
+    }
+
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;

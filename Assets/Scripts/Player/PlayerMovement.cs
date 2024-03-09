@@ -19,6 +19,7 @@ namespace Player
         private bool _canJump;
         private bool _isTouchingFloor;
         [SerializeField] private AudioClip jumpSound;
+        public float downwardVelocity;
         // Start is called before the first frame update
         void Start()
         {
@@ -29,6 +30,13 @@ namespace Player
         private void FixedUpdate()
         {
             if (_canMove) _rigidbody2D.velocity += _playerInput * (playerSpeed * Time.fixedDeltaTime);
+            Debug.Log("Player Velocity: " + _rigidbody2D.velocity);
+            RecordDownwardVelocity();
+        }
+
+        void RecordDownwardVelocity()
+        {
+            if (_rigidbody2D.velocity.y < 0) downwardVelocity = _rigidbody2D.velocity.y;
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -56,7 +64,7 @@ namespace Player
             if (_playerAudioSource.isPlaying) _playerAudioSource.Stop();
             int newSound = Random.Range(0, movementSounds.Length);
             _playerAudioSource.clip = movementSounds[newSound];
-            Debug.Log("Player Movement Clip: " + _playerAudioSource.clip.name);
+            // Debug.Log("Player Movement Clip: " + _playerAudioSource.clip.name);
             _playerAudioSource.Play();
         }
         void SetPlayerSpriteDirection()

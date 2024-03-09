@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
@@ -20,6 +21,10 @@ namespace GameManager
         [SerializeField] private bool canResetCurrentPlayerLevel;
         private CinemachineBrain _cinemachineBrain;
         [SerializeField] private TilemapCollider2D wallCollider2d;
+        [SerializeField] private GameObject MainMenuCanvas;
+        private MainMenu _mainMenu;
+        [SerializeField] private GameObject trapdoorObj;
+        private GameObject[] _trapdoors;
         
 
         // Start is called before the first frame update
@@ -27,27 +32,41 @@ namespace GameManager
         {
             _gameManager = FindObjectOfType<GameManager>();
             _cinemachineBrain = FindObjectOfType<CinemachineBrain>();
-            if (canResetCurrentPlayerLevel) StartNewGame();
-            if (!_gameManager.debugMode) ResumeCurrentGame();
-            ChooseNewCamera();
-            PlayGame();
+            _mainMenu = FindObjectOfType<MainMenu>();
+            _trapdoors = GameObject.FindGameObjectsWithTag("Trapdoor");
+            currentLevel = PlayerPrefs.GetInt("PlayerLevel");
+            // if (currentLevel > 0) ChooseNewCamera();
         }
 
         public void PlayGame()
         {
+            MainMenuCanvas.SetActive(false);
+            _gameManager.PlayMusic();
+            ResetGameComponents();
+            ChooseNewCamera();
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
             if (players.Length > 0) return;
             _spawnedPlayer = 
                 Instantiate(playerObj, spawnLocations[currentLevel].position, quaternion.identity);
         }
 
-        void StartNewGame()
+        void ResetGameComponents()
         {
-            PlayerPrefs.SetInt("PlayerLevel", 0);
+            Lightbulb[] lightbulbs = FindObjectsOfType<Lightbulb>();
+            foreach (var lightbulb in lightbulbs) lightbulb.DisableLightbulb();
+            Door[] doors = FindObjectsOfType<Door>();
+            foreach (var levelDoor in doors) levelDoor.CloseDoor();
+            _trapdoors = GameObject.FindGameObjectsWithTag("Trapdoor");
+            foreach (var trapdoor in _trapdoors) trapdoor.SetActive(true);
+            GameObject[] keys = GameObject.FindGameObjectsWithTag("Key");
+            foreach (var gameKey in keys) gameKey.SetActive(true);
+            GameObject[] lightLocks = GameObject.FindGameObjectsWithTag("Lightlock");
+            foreach (var lightLock in lightLocks) lightLock.SetActive(true);
         }
 
-        void ResumeCurrentGame()
+        public void StartNewGame()
         {
+            PlayerPrefs.SetInt("PlayerLevel", 0);
             currentLevel = PlayerPrefs.GetInt("PlayerLevel");
         }
 
@@ -69,6 +88,10 @@ namespace GameManager
         {
             Destroy(_spawnedPlayer);
             Debug.Log("Game Over.");
+            currentLevel = 0;
+            StartNewGame();
+            if (_mainMenu != null) _mainMenu.CanvasGroupZero();
+            MainMenuCanvas.SetActive(true);
         }
 
         void MovePlayerToNewSpawnLocation()
