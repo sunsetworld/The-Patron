@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
+using GameHUD;
 
 namespace Jim
 {
@@ -9,10 +8,13 @@ namespace Jim
         private JimMovement _jimMovement;
         [SerializeField] private Sprite jimMachineActivateSprite;
         [SerializeField] SpriteRenderer spriteRenderer;
+        private CharacterSwap _characterSwap;
+        
         // Start is called before the first frame update
         void Start()
         {
             _jimMovement = FindObjectOfType<JimMovement>();
+            _characterSwap = FindObjectOfType<CharacterSwap>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -25,7 +27,7 @@ namespace Jim
         {
             _jimMovement.activateJim = true;
             spriteRenderer.sprite = jimMachineActivateSprite;
-
+            _characterSwap.EnableCanvas();
         }
     }
 }

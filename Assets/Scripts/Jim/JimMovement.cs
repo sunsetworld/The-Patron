@@ -9,7 +9,7 @@ namespace Jim
  [SerializeField, Tooltip("Player Movement")] private float playerSpeed = 20f;
         private bool _canMove;
         private Vector2 _playerInput;
-        [SerializeField, Range(1f, 20f)] private float playerJumpHeight = 5f;
+        [SerializeField, Range(1f, 40f)] private float playerJumpHeight = 5f;
         [Tooltip("Components")] private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private AudioSource _playerAudioSource;

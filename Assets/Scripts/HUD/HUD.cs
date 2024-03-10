@@ -2,7 +2,6 @@ using Jim;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-
 public class HUD : MonoBehaviour
 {
     private Image _characterHUDImage;

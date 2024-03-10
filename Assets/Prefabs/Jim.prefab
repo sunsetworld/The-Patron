@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010a90f49883f5940acf6e15f5b243eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 50
+  playerSpeed: 40
   playerJumpHeight: 20
   movementSounds:
   - {fileID: 8300000, guid: 8a4cf2afbefd96b4f808436a50b37d09, type: 3}

@@ -40,6 +40,11 @@ namespace GameManager
             if (_audioSource != null) _audioSource.Play();
             doorObj.OpenDoor();
         }
+
+        public void ReversePuzzle()
+        {
+            doorObj.CloseDoor();
+        }
     }
 
 }

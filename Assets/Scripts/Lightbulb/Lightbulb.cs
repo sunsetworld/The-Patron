@@ -66,5 +66,6 @@ public class Lightbulb : MonoBehaviour
         _spriteRenderer.sprite = lightbulbUnlit;
         // AudioSource.PlayClipAtPoint(lightbulbOffSound, transform.position);
         lightbulbEnabled = false;
+        puzzleManager.ReversePuzzle();
     }
 }

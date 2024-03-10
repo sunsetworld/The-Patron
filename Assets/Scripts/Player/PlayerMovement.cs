@@ -1,4 +1,5 @@
 using System.Collections;
+using GameHUD;
 using Jim;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,6 +31,7 @@ namespace Player
         [Header("External Components")]
         private JimMovement _jimMovement;
         private HUD _hud;
+        private CharacterSwap _characterSwap;
         
         [Header("General Movement")]
         private bool _isTouchingFloor;
@@ -45,6 +47,7 @@ namespace Player
         {
             _jimMovement = FindObjectOfType<JimMovement>();
             _hud = FindObjectOfType<HUD>();
+            _characterSwap = FindObjectOfType<CharacterSwap>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _playerAudioSource = GetComponent<AudioSource>();
@@ -114,6 +117,11 @@ namespace Player
         {
             if (!context.performed) return;
             if (!_jimMovement.activateJim) return;
+            if (!_characterSwap.firstSwap)
+            {
+                _characterSwap.firstSwap = true;
+                _characterSwap.DisableCanvas();
+            }
             _jimMovement.canUseJim = !_jimMovement.canUseJim;
             if (_jimMovement.canUseJim)
             {
