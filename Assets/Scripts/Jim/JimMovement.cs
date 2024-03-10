@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,9 @@ namespace Jim
         [Header("Jim Specific")] 
         public bool activateJim;
         public bool canUseJim;
+
+        [SerializeField] private float arrowLength = 3;
+        [SerializeField] public GameObject characterArrowObj;
         
         // Start is called before the first frame update
         void Start()
@@ -84,6 +88,13 @@ namespace Jim
             jumpVelocity.y += playerJumpHeight;
             _rigidbody2D.velocity = jumpVelocity;
             AudioSource.PlayClipAtPoint(jumpSound, transform.position);
+        }
+
+        public IEnumerator ShowCharacterArrow()
+        {
+            characterArrowObj.SetActive(true);
+            yield return new WaitForSeconds(arrowLength);
+            characterArrowObj.SetActive(false);
         }
     }
 }

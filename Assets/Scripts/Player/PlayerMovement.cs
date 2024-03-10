@@ -1,3 +1,4 @@
+using System.Collections;
 using Jim;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,21 +8,37 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField, Tooltip("Player Movement")] private float playerSpeed = 20f;
+        [Header("Run")]
+        [SerializeField, Range(1f, 50f)] private float playerSpeed = 20f;
         private bool _canMove;
         private Vector2 _playerInput;
+        
+        [Header("Jump")]
         [SerializeField, Range(1f, 20f)] private float playerJumpHeight = 5f;
-        [Tooltip("Components")] private Rigidbody2D _rigidbody2D;
-        private SpriteRenderer _spriteRenderer;
-        private AudioSource _playerAudioSource;
-        [SerializeField] private AudioClip[] movementSounds;
         private bool _canDoubleJump;
         private bool _canJump;
-        private bool _isTouchingFloor;
+        
+        [Header("Audio")]
         [SerializeField] private AudioClip jumpSound;
-        public float downwardVelocity;
+        [SerializeField] private AudioClip[] movementSounds;
+        
+        [Header("Internal Components")]
+        private Rigidbody2D _rigidbody2D;
+        private SpriteRenderer _spriteRenderer;
+        private AudioSource _playerAudioSource;
+        
+        [Header("External Components")]
         private JimMovement _jimMovement;
         private HUD _hud;
+        
+        [Header("General Movement")]
+        private bool _isTouchingFloor;
+        public float downwardVelocity;
+
+        [Header("Character Arrow")] 
+        [SerializeField] private GameObject characterArrowObj;
+        [SerializeField] private float arrowLength = 3;
+
         
         // Start is called before the first frame update
         void Start()
@@ -98,6 +115,18 @@ namespace Player
             if (!context.performed) return;
             if (!_jimMovement.activateJim) return;
             _jimMovement.canUseJim = !_jimMovement.canUseJim;
+            if (_jimMovement.canUseJim)
+            {
+                StopCoroutine(ShowCharacterArrow());
+                characterArrowObj.SetActive(false);
+                StartCoroutine(_jimMovement.ShowCharacterArrow());
+            }
+            else
+            {
+                StopCoroutine(_jimMovement.ShowCharacterArrow());
+                _jimMovement.characterArrowObj.SetActive(false);
+                StartCoroutine(ShowCharacterArrow());
+            }
             _hud.SwitchCharacter();
             
         }
@@ -113,6 +142,13 @@ namespace Player
             if(_isTouchingFloor)_isTouchingFloor = false;
             _canJump = false;
             _canDoubleJump = true;
+        }
+
+        public IEnumerator ShowCharacterArrow()
+        {
+            characterArrowObj.SetActive(true);
+            yield return new WaitForSeconds(arrowLength);
+            characterArrowObj.SetActive(false);
         }
     }
 }

@@ -20,12 +20,14 @@ public class Lightbulb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player")) _canInteractWithLightbulb = true;
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Jim")) 
+            _canInteractWithLightbulb = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player")) _canInteractWithLightbulb = false;
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Jim")) 
+            _canInteractWithLightbulb = false;
     }
 
     public void OnInteract(InputAction.CallbackContext context)

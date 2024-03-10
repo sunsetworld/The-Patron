@@ -22,6 +22,7 @@ namespace GameManager
         [SerializeField] private TilemapCollider2D wallCollider2d;
         [SerializeField] private GameObject MainMenuCanvas;
         [SerializeField] private GameObject hudCanvas;
+        private HUD _hud;
         private MainMenu _mainMenu;
         [SerializeField] private GameObject trapdoorObj;
         private GameObject[] _trapdoors;
@@ -33,6 +34,7 @@ namespace GameManager
             _gameManager = FindObjectOfType<GameManager>();
             _cinemachineBrain = FindObjectOfType<CinemachineBrain>();
             _mainMenu = FindObjectOfType<MainMenu>();
+            _hud = FindObjectOfType<HUD>();
             _trapdoors = GameObject.FindGameObjectsWithTag("Trapdoor");
             currentLevel = PlayerPrefs.GetInt("PlayerLevel");
             // if (currentLevel > 0) ChooseNewCamera();
@@ -42,6 +44,7 @@ namespace GameManager
         {
             MainMenuCanvas.SetActive(false);
             hudCanvas.SetActive(true);
+            _hud.GameStart();
             _gameManager.PlayMusic();
             ResetGameComponents();
             ChooseNewCamera();
@@ -91,6 +94,7 @@ namespace GameManager
             Debug.Log("Game Over.");
             currentLevel = 0;
             StartNewGame();
+            _hud.GameEnd();
             if (_mainMenu != null) _mainMenu.CanvasGroupZero();
             MainMenuCanvas.SetActive(true);
         }

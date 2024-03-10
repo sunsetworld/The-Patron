@@ -10,6 +10,7 @@ TagManager:
   - Trapdoor
   - Key
   - Lightlock
+  - Jim
   layers:
   - Default
   - TransparentFX
