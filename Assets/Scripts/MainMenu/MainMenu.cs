@@ -54,5 +54,10 @@ public class MainMenu : MonoBehaviour
     {
         _levelManager.PlayGame();
     }
+
+    public void OnQuit()
+    {
+        Application.Quit();
+    }
     
 }

@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.71519184, y: 0.9362929}
+  m_Size: {x: 0.9, y: 1.1}
   m_EdgeRadius: 0
 --- !u!114 &5422097114022785969
 MonoBehaviour:
@@ -149,6 +149,7 @@ MonoBehaviour:
   lightbulbUnlit: {fileID: 21300000, guid: 65006e67563c1b442812946afcb60476, type: 3}
   lightbulbOnSound: {fileID: 8300000, guid: 5b67822f6399a914faecb6aa740cc5a4, type: 3}
   lightbulbOffSound: {fileID: 8300000, guid: 5b67822f6399a914faecb6aa740cc5a4, type: 3}
+  puzzleManager: {fileID: 0}
 --- !u!114 &3992182844538054909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +239,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2c770b02-6c48-4d50-802d-76559c88c9fe
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 53faaae6-8e9a-456d-b54d-de7b797f2ef3
+    m_ActionName: Player/Mute[/Keyboard/m]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

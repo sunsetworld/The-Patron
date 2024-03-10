@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
@@ -22,6 +21,7 @@ namespace GameManager
         private CinemachineBrain _cinemachineBrain;
         [SerializeField] private TilemapCollider2D wallCollider2d;
         [SerializeField] private GameObject MainMenuCanvas;
+        [SerializeField] private GameObject hudCanvas;
         private MainMenu _mainMenu;
         [SerializeField] private GameObject trapdoorObj;
         private GameObject[] _trapdoors;
@@ -41,6 +41,7 @@ namespace GameManager
         public void PlayGame()
         {
             MainMenuCanvas.SetActive(false);
+            hudCanvas.SetActive(true);
             _gameManager.PlayMusic();
             ResetGameComponents();
             ChooseNewCamera();
