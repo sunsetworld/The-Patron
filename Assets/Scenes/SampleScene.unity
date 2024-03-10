@@ -1094,6 +1094,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ecad4b7b-b8bb-46fc-96c7-0dca0510a8ec
     m_ActionName: Player/Switch[/Mouse/middleButton,/Keyboard/alt]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 136490345}
+        m_TargetAssemblyTypeName: GameManager.GameManager, Assembly-CSharp
+        m_MethodName: OnFullscreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c192671e-398f-4b70-bb1a-14de6db257e2
+    m_ActionName: Player/Fullscreen[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
