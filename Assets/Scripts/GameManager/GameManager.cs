@@ -8,6 +8,7 @@ namespace GameManager
         public bool debugMode; // Turn OFF when shipping.
         private AudioSource _audioSource;
         public bool playerHasKey;
+        [SerializeField] private bool canPlayMusic;
 
         private void Start()
         {
@@ -23,13 +24,14 @@ namespace GameManager
 
         public void PlayMusic()
         {
+            if (!canPlayMusic) return;
             if (_audioSource.mute) _audioSource.mute = false;
             if (!_audioSource.isPlaying) _audioSource.Play();
         }
 
         public void OnFullscreen(InputAction.CallbackContext context)
         {
-            Screen.fullScreen = !Screen.fullScreen;
+            if (context.performed) Screen.fullScreen = !Screen.fullScreen;
         }
     }
 }
