@@ -1,5 +1,4 @@
 using System.Collections;
-using DG.Tweening;
 using GameHUD;
 using Jim;
 using UnityEngine;
@@ -42,10 +41,6 @@ namespace Player
         [SerializeField] private GameObject characterArrowObj;
         [SerializeField] private float arrowLength = 3;
 
-        [Header("Inertia")] 
-        [SerializeField, Range(0.5f, 5f)] private float inertiaTime = 3;
-        [SerializeField] private bool enableInertia;
-
         
         // Start is called before the first frame update
         void Start()
@@ -81,14 +76,9 @@ namespace Player
             else if (context.canceled)
             {
                 _playerAudioSource.Stop();
-                PlayerInertia();
+                _canMove = false;
             }
             SetPlayerSpriteDirection();
-        }
-
-        void PlayerInertia()
-        {
-            _canMove = false;
         }
         void ChooseMovementSound()
         {
