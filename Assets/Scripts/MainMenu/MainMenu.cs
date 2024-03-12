@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 using GameManager;
+using TMPro;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -15,14 +16,22 @@ public class MainMenu : MonoBehaviour
     private LevelManager _levelManager;
 
     [SerializeField] private Button resumeButton;
+
+    [SerializeField] private TMP_Text applicationVersionTxt;
     // Start is called before the first frame update
     void Start()
     {
         _canvasGroup = GetComponentInChildren<CanvasGroup>();
         _gameManager = FindObjectOfType<GameManager.GameManager>();
         _levelManager = FindObjectOfType<LevelManager>();
+        ApplicationVersion();
         _canvasGroup.DOFade(1, openFadeDuration);
         SetResumeButton();
+    }
+
+    void ApplicationVersion()
+    {
+        applicationVersionTxt.text = "v" + Application.version;
     }
 
     private void OnEnable()

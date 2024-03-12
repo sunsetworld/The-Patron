@@ -29,7 +29,7 @@ namespace GameManager
 
         public void OnFullscreen(InputAction.CallbackContext context)
         {
-            Screen.fullScreen = !Screen.fullScreen;
+            if (context.performed) Screen.fullScreen = !Screen.fullScreen;
         }
     }
 }
