@@ -7,6 +7,7 @@ namespace Jim
     {
         private JimMovement _jimMovement;
         [SerializeField] private Sprite jimMachineActivateSprite;
+        [SerializeField] private Sprite jimMachineDeactivateSprite;
         [SerializeField] SpriteRenderer spriteRenderer;
         private CharacterSwap _characterSwap;
         
@@ -28,6 +29,12 @@ namespace Jim
             _jimMovement.activateJim = true;
             spriteRenderer.sprite = jimMachineActivateSprite;
             _characterSwap.EnableCanvas();
+        }
+
+        public void DeactivateJimMachine()
+        {
+            _jimMovement.activateJim = false;
+            spriteRenderer.sprite = jimMachineDeactivateSprite;
         }
     }
 }

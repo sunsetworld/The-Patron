@@ -144,3 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageThreshold: -12
+  breakSound: {fileID: 8300000, guid: bddb4347ae512e04493420f4d1bd046c, type: 3}

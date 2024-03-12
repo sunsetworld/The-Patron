@@ -1,6 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 using DG.Tweening;
+using Jim;
 using Unity.Mathematics;
 using UnityEngine.Tilemaps;
 
@@ -26,15 +27,20 @@ namespace GameManager
         private MainMenu _mainMenu;
         [SerializeField] private GameObject trapdoorObj;
         private GameObject[] _trapdoors;
+        private JimMachine _jimMachine;
+        public GameObject[] destroyableObjects;
+        private MusicManager _musicManager;
         
 
         // Start is called before the first frame update
         void Start()
         {
+            _jimMachine = GameObject.FindObjectOfType<JimMachine>();
             _gameManager = FindObjectOfType<GameManager>();
             _cinemachineBrain = FindObjectOfType<CinemachineBrain>();
             _mainMenu = FindObjectOfType<MainMenu>();
             _hud = FindObjectOfType<HUD>();
+            _musicManager = GetComponent<MusicManager>();
             _trapdoors = GameObject.FindGameObjectsWithTag("Trapdoor");
             currentLevel = PlayerPrefs.GetInt("PlayerLevel");
             // if (currentLevel > 0) ChooseNewCamera();
@@ -45,7 +51,7 @@ namespace GameManager
             MainMenuCanvas.SetActive(false);
             hudCanvas.SetActive(true);
             _hud.GameStart();
-            _gameManager.PlayMusic();
+            _musicManager.PlaySoundtrack();
             ResetGameComponents();
             ChooseNewCamera();
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -60,12 +66,8 @@ namespace GameManager
             foreach (var lightbulb in lightbulbs) lightbulb.DisableLightbulb();
             Door[] doors = FindObjectsOfType<Door>();
             foreach (var levelDoor in doors) levelDoor.CloseDoor();
-            _trapdoors = GameObject.FindGameObjectsWithTag("Trapdoor");
-            foreach (var trapdoor in _trapdoors) trapdoor.SetActive(true);
-            GameObject[] keys = GameObject.FindGameObjectsWithTag("Key");
-            foreach (var gameKey in keys) gameKey.SetActive(true);
-            GameObject[] lightLocks = GameObject.FindGameObjectsWithTag("Lightlock");
-            foreach (var lightLock in lightLocks) lightLock.SetActive(true);
+            _jimMachine.DeactivateJimMachine();
+            foreach (var obj in destroyableObjects) obj.SetActive(true);
         }
 
         public void StartNewGame()

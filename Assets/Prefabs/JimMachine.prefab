@@ -144,3 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jimMachineActivateSprite: {fileID: 21300000, guid: 2928ac4bce62d9f4ea66c75b989fd24f, type: 3}
+  jimMachineDeactivateSprite: {fileID: -7942410761913808812, guid: 83886b69dac48ef44a72d437c35009f8, type: 3}
+  spriteRenderer: {fileID: 472088299991089831}

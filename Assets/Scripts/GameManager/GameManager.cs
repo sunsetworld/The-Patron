@@ -21,12 +21,6 @@ namespace GameManager
             else _audioSource.mute = false;
         }
 
-        public void PlayMusic()
-        {
-            if (_audioSource.mute) _audioSource.mute = false;
-            if (!_audioSource.isPlaying) _audioSource.Play();
-        }
-
         public void OnFullscreen(InputAction.CallbackContext context)
         {
             if (context.performed) Screen.fullScreen = !Screen.fullScreen;
