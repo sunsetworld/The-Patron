@@ -27,6 +27,7 @@ namespace Player
         private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private AudioSource _playerAudioSource;
+        private Animator _animator;
         
         [Header("External Components")]
         private JimMovement _jimMovement;
@@ -51,6 +52,7 @@ namespace Player
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _playerAudioSource = GetComponent<AudioSource>();
+            _animator = GetComponent<Animator>();
         }
         private void FixedUpdate()
         {
@@ -71,11 +73,13 @@ namespace Player
             if (context.performed)
             {
                 _canMove = true;
+                _animator.SetBool("isMoving", true);
                 ChooseMovementSound();
             }
             else if (context.canceled)
             {
                 _playerAudioSource.Stop();
+                _animator.SetBool("isMoving", false);
                 _canMove = false;
             }
             SetPlayerSpriteDirection();

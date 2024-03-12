@@ -893,6 +893,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugMode: 0
   playerHasKey: 0
+  openDyslexicFont: {fileID: 11400000, guid: bb6659b0deca65848b06c27b3171dca3, type: 2}
+  standardFont: {fileID: 11400000, guid: 902b9d2018eb06c4b80474b7a402f39a, type: 2}
 --- !u!4 &136490346
 Transform:
   m_ObjectHideFlags: 0
@@ -923,7 +925,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -20853,6 +20855,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1921617226}
     m_Modifications:
     - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.02
       objectReference: {fileID: 0}
@@ -21000,6 +21006,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 909371888}
     m_Modifications:
+    - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.91
@@ -25529,6 +25539,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1921617226}
     m_Modifications:
     - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.02
       objectReference: {fileID: 0}
@@ -26064,6 +26078,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1841657441}
     m_Modifications:
+    - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.111
@@ -69812,6 +69830,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1841657441}
     m_Modifications:
     - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.12
       objectReference: {fileID: 0}
@@ -71214,6 +71236,10 @@ PrefabInstance:
       propertyPath: CharacterSwapCanvasObj
       value: 
       objectReference: {fileID: 1503748426}
+    - target: {fileID: 5108347525790255943, guid: 6235f34c6d6611949908810a6c1f362f, type: 3}
+      propertyPath: jimMachineDeactivateSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 810fb7dd89bc0f64cb23630b0b1273dc, type: 3}
     - target: {fileID: 7288455074991563033, guid: 6235f34c6d6611949908810a6c1f362f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.26
@@ -71267,6 +71293,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1499901597}
     m_Modifications:
+    - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4151318992805351580, guid: c33ffdcc58eeb5342b88d84556d2aaeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.56

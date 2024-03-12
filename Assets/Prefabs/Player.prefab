@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 7753791277549323577}
   - component: {fileID: 1995534976621927733}
   - component: {fileID: 8418110447736301840}
+  - component: {fileID: 5026430198787495111}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -165,7 +166,7 @@ SpriteRenderer:
   m_SortingLayerID: 795592537
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 33322d7c2ed075646add614ec11bdfb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a263d2b1179325f418d62f32ee899a9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -393,6 +394,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ecad4b7b-b8bb-46fc-96c7-0dca0510a8ec
     m_ActionName: Player/Switch[/Mouse/middleButton,/Keyboard/alt]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c192671e-398f-4b70-bb1a-14de6db257e2
+    m_ActionName: Player/Fullscreen[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -652,3 +657,24 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!95 &5026430198787495111
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493076190940403320}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 272ffe785b11b5846b154f1f69fa335b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

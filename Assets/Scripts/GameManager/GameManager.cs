@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,9 @@ namespace GameManager
         public bool debugMode; // Turn OFF when shipping.
         private AudioSource _audioSource;
         public bool playerHasKey;
+
+        [SerializeField] private TMP_FontAsset openDyslexicFont;
+        [SerializeField] private TMP_FontAsset standardFont;
 
         private void Start()
         {
