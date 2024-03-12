@@ -13,6 +13,8 @@ namespace GameManager
         [SerializeField] private TMP_FontAsset openDyslexicFont;
         [SerializeField] private TMP_FontAsset standardFont;
 
+        private bool _useOpenDyslexic;
+
         private void Start()
         {
             _audioSource = GetComponent<AudioSource>();
