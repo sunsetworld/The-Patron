@@ -30,12 +30,20 @@ namespace GameManager
         private JimMachine _jimMachine;
         public GameObject[] destroyableObjects;
         private MusicManager _musicManager;
+
+        [Header("Jim")] 
+        [SerializeField] Transform[] jimSpawnLocations;
+        private int _jimLevel;
+        [SerializeField] private int jimLevelThreshhold = 6;
+        private JimMovement _jimMovement;
+        [SerializeField] private GameObject jimObj;
         
 
         // Start is called before the first frame update
         void Start()
         {
             _jimMachine = GameObject.FindObjectOfType<JimMachine>();
+            _jimMovement = FindObjectOfType<JimMovement>();
             _gameManager = FindObjectOfType<GameManager>();
             _cinemachineBrain = FindObjectOfType<CinemachineBrain>();
             _mainMenu = FindObjectOfType<MainMenu>();
@@ -43,7 +51,7 @@ namespace GameManager
             _musicManager = GetComponent<MusicManager>();
             _trapdoors = GameObject.FindGameObjectsWithTag("Trapdoor");
             currentLevel = PlayerPrefs.GetInt("PlayerLevel");
-            // if (currentLevel > 0) ChooseNewCamera();
+            jimObj = GameObject.FindGameObjectWithTag("Jim");
         }
 
         public void PlayGame()
@@ -58,6 +66,11 @@ namespace GameManager
             if (players.Length > 0) return;
             _spawnedPlayer = 
                 Instantiate(playerObj, spawnLocations[currentLevel].position, quaternion.identity);
+            if (currentLevel >= jimLevelThreshhold)
+            {
+                _jimMovement.activateJim = true;
+                MoveJim();
+            }
         }
 
         void ResetGameComponents()
@@ -108,9 +121,23 @@ namespace GameManager
                 wallCollider2d.enabled = false;
                 _spawnedPlayer.transform.DOMove(spawnLocations[currentLevel].position, playerMoveDuration)
                     .OnComplete(() => wallCollider2d.enabled = true);
-                
+                MoveJim();
             }
-            else _spawnedPlayer.transform.position = spawnLocations[currentLevel].position;
+            else
+            {
+                _spawnedPlayer.transform.position = spawnLocations[currentLevel].position;
+            }
+        }
+
+        void MoveJim()
+        {
+            if (_jimMovement.activateJim)
+            {
+                _jimLevel++;
+                wallCollider2d.enabled = false;
+                jimObj.transform.DOMove(jimSpawnLocations[_jimLevel].position, playerMoveDuration)
+                    .OnComplete(() => wallCollider2d.enabled = true);
+            }
         }
 
         void ChooseNewCamera()

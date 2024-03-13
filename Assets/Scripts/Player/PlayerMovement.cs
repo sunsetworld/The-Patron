@@ -73,7 +73,7 @@ namespace Player
             if (context.performed)
             {
                 _canMove = true;
-                _animator.SetBool("isMoving", true);
+                if (_isTouchingFloor) _animator.SetBool("isMoving", true);
                 ChooseMovementSound();
             }
             else if (context.canceled)
